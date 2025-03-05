@@ -15,8 +15,7 @@ var person = {
     ID: "0709",
     getPersonDetails: function() {
         return `First Name is - ${this.FirstName}
-                Address is - ${this.Address}`
-                
+                Address is - ${this.Address}`    
     }
     
 }
