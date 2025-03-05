@@ -16,6 +16,8 @@ var person = {
     getPersonDetails: function() {
         return `First Name is - ${this.FirstName}
                 Address is - ${this.Address}`
+                
     }
+    
 }
 
