@@ -9,7 +9,7 @@
 
 
 
-var person = {
+var Person = {
     FirstName: "Huy",
     Address: "Seattle",
     ID: "0709",
@@ -19,4 +19,20 @@ var person = {
     }
     
 }
+//create a constructor of the class and allow inheritance and polymorphism
+var Student = Object.create(Person)
 
+Student.FirstName = "Dat"
+Student.degree = "Bachelor"
+Student.ID = "2580448"
+
+console.log(Person.getPersonDetails())
+
+Student.getPersonDetails = function (){
+    return `First Name is - ${this.FirstName}
+            Address is - ${this.Address}
+            SID is - ${this.ID}
+            Degree is - ${this.degree}`
+            
+}
+console.log(Student.getPersonDetails())
