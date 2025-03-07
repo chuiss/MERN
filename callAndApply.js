@@ -1,6 +1,7 @@
-
 //Call and Apply are the extended functions present in the function definition,which allows to change or update the scope of the
 // given function by passing the object as a parameter
+
+// Whenever we set object and invoke call or apply it immediately executes the function with the scope of new object passed
 
 //Call - function.call is used to accept first parameter as an object which we want to apply as scope in the function, 
 // and second and subsqeuent parameters will be used to pass function parameters
@@ -33,14 +34,14 @@ function PrintInfo(msg, additionalInfo) {
 
 //PrintInfo() //this execution of function happens in a global scope, which is js environment or node js envt
 
-PrintInfo.call(user1, "Software Engineer", "MERNStack Expert")
+PrintInfo.call(user1, "Software Engineer", "MERNStack Expert") //immediately executes and returns value with new object as its scope
 PrintInfo.call(user2, "IT Professional", "AI Expert")
 
 
-var Car = {Brand : "Lexus", Name : "NX300", Price : "$50000"}
-var Jeep = {Brand : "Mahindra Jeep", Name : "Manual", Price : "$80000"}
+var Car = {Brand : "Tesla Car", Name : "AI-Tesla", Price : "$100000"}
+var Jeep = {Brand : "Mahindra Jeep", Name : "Manual", Price : "$150000"}
 
-function VehicleInfo(make, model, year, gears, automatic, groundClearance, airbags, crushTestValue) {
+function VehicalInfo(make, model, year, gears, automatic, groundClearance, airbags, crushTestValue) {
     console.log(`
         ${make}
         ${model}
@@ -57,10 +58,10 @@ function VehicleInfo(make, model, year, gears, automatic, groundClearance, airba
 
 var basicInfo = ["US", "First", "2025", "6", "yes", "10 inches", "5", "4.5"]
 
-VehicleInfo.call(Car, "US", "First", "2025", "6")
+VehicalInfo.call(Car, "US", "First", "2025", "6")
 
-VehicleInfo.apply(Car, basicInfo)
-VehicleInfo.apply(Car, basicInfo)
+VehicalInfo.apply(Car, basicInfo)
+VehicalInfo.apply(Car, basicInfo)
 
 var ArithmeticData = {msg:"We are doing sum", data:"This is array list"}
 
