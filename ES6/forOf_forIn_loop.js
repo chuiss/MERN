@@ -1,6 +1,6 @@
 for (let index = 0; index <Array.length; index++ ){
     const element = array[index];
-}  // this kinda loop i snot good i would increase the time complexity
+}  // this kinda loop i not good it would increase the time complexity
 
 //for ->  array[1].key
 //foreach -> (this)
