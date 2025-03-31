@@ -45,7 +45,7 @@ let User2Product = {...User, ...Address}
 //Rest - parameter and operator : any array data can be passed as rest parameter in any function, but it should be 
 // the last parameter, also when we try to assign values to rest operator it should be the last literal
 
-//tejasvi
+
 
 //rest should be the last parameter
 // function name(p1, p2, p3, ...rest) {

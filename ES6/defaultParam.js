@@ -1,77 +1,29 @@
-//for ->  array[1].key
-//foreach -> (this)
-//1. loops through length
-//2. to access the value we pass key as index for current object array[1].key , (this)
+// default param - is a standard practice used now to have a default value for the parameters
 
-//the collections or Iterables are array of JSON or JSON of JSON
-// let ProductList = [{Prod1},{Prod2}]
-// for (let index = 0; index < ProductList.length; index++) {
-//     const element = ProductList[index];
-//     element["productname"]
-// }
+function Sum(p1=0, p2=0, p3=0) {
+    //console.log(p3)
+    // if (p1 && p2 && p3) {
+    //     return p1+p2+p3    
+    // }
+    // else{
+    //     return 0
+    // }
 
-//a. for in loop - iterates over the property value, basically meant for json objects with - key values
-
-//for in loop  
-let person = {fname:"John", lname:"Doe", age:25, address : {}, sesion: "MERNStack"}; 
-
-// for (const key in person) {
-
-//     //if (Object.prototype.hasOwnProperty.call(person, key)) {
-//         const element = person[key];
-//         console.log(element)
-//     //}
-// }
-
-//console.log("Other Example with array") 
-
-
-let arr = [3,5,7]; //{0:3, 1:5, 2:7, 3:"Joel"}
-
-arr.push("Joel")
-//arr[3] = "Tejasvi"
-
-arr["name"] = "Eric"
-
-for (const key in arr) {
-        const element = arr[key];
-        console.log({key})
-        console.log({element})
+    return p1+p2+p3
 }
 
+console.log(Sum())
+console.log(Sum(1,2,3))
+console.log(Sum(1,2))
+console.log(Sum(1))
 
-//b. for of - loop works for the array's in javascript and retrieves the value without indexing
-// 
-let numbers = [9,10,11]
 
-//numbers[3] = "Em Long"
-//numbers.push("Mike")
+//create and example of multiplication using default params
 
-numbers["name"] = "Eric"
-
-console.log(numbers)
-
-for (const element of numbers) {
-    console.log(element) //data can be accessed without indexes
+function Manager(t1 = 0, t2 = 0, t3 = 0){
+    return t1 + t2+ t3
 }
-
-console.log("For Of Loop") 
-
-let cars = ['BMW', 'Volvo', 'Mini']; 
-
-//cars[5] = "Toyota"
-
-//cars.newKey = "Range Rover"
-
-cars.push("Range Rover")
-
-//explict key can not be identified via for of loop, for this array indexes are the keys
-
-for (const element of cars) {
-    console.log(element)
-}
-
-
-//Create an example of your own for -
-// 1. ForOF Loop
-// 2. ForIn loop
+console.log("Manager")
+console.log(Manager())
+console.log(Manager(34,4))
+console.log(Manager(12,3,43))
