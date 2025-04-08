@@ -36,3 +36,9 @@ console.log(`Animal sounds with ES6 short hand ${JSON.stringify(animalSoundES6)}
 console.log("Animal sounds with vanilla javascript "+ animalSound)
 
 module.exports = animalSoundES6;  //exporting the object to be used in other files
+
+
+globalThis.userInfo = {
+    Name : "Jeremiah Dy",
+    Session : "MERNStack"
+}

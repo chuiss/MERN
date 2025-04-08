@@ -1,0 +1,6 @@
+/nodeapi/node_modules
+/nodeapi/package-lock.json
+/nodeapi/package.json
+/nodeapi/.env
+/nodeapi/.env.example
+/reactapp/node_modules
