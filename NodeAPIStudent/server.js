@@ -1,7 +1,7 @@
 let express = require('express')
 const app = express() //when we invoke it creates an express application which helps to build a web server
 
-const defaultRoute = require("./route/defaultRoute")
+const defaultRoute = require("./route_Student/defaultRoute")
 const deafultApp = express();
 
 globalThis.rootPath = __dirname

@@ -1,0 +1,154 @@
+################### NOTE is from Apr15 Record if anything is not clear ###################
+
+Create ReactApp folder in your desire directory
+
+npm init 
+
+---> Press enter(s) for default setting ---> package.json is created ---> 
+
+
+
+npm i webpack webpack-cli webpack-dev-server -D
+
+--> devDependencies is created in package.json + package-lock.json + node_modules
+
+create a file called 'webpack.config.js' in ReactApp folder then paste this in 'webpack.config.js' for the path
+
+=================================================================================================================
+
+//CREATE A PATH
+let path = require("path"), //path module of node framework
+HtmlWebpackPlugin = require('html-webpack-plugin'), //to load the index html file on request
+
+config = {
+    output: {
+        path: path.join(__dirname, '/dist'), //dist - distribution ---- create a path with dist name
+        filename: 'bundle.js' //the file name will be bundle.js
+    },
+
+//DEVSERVER
+    // webpack 5 comes with devServer which loads in development mode
+    devServer: {
+        port: 9090, //localhost:9090
+        historyApiFallback : true //localhost:9090/user
+    },
+      
+    // Rules of how webpack will take our files, complie & bundle them for the browser 
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: 'babel-loader'
+                }
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                exclude: /node_modules/,
+                type: 'asset/resource',
+            }
+        ]
+    },
+    plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })] //localhost:9090 - loads this html
+}
+
+module.exports = config;
+
+=================================================================================================================
+
+Create configuration file called '.babelrc' then add 2 modules inside that config
+
+{
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+    ]
+}
+
+After added we will install 
+
+npm i @babel/core @babel/preset-env @babel/preset-react babel-loader -D
+
+Next, Creats 'src' directory in ReactApp folder --> then create 'app' directory in 'src' directory folder --> Creates 'index.js' and 'index.html' files in src --> in 'index.html' type 'html:5' enter --> 'html:5' structure will be created --> Change title to 'React App' 
+--> in body add 
+<h1>This is the index page of our application</h>
+<div id="root">This Div will act as a container for react application!!!</div>
+
+
+In index.js add
+	console.log("This file is part of webpack configuration and is loaded via bundle.js refered in index.html")
+
+install 
+npm i css-loader html-webpack-plugin style-loader -D
+
+
+in 'package.json' --> "scripts" --> add 2 commands 
+	"start": "webpack serve --mode development ",
+	"build": "webpack --mode production ",
+
+	//more development : will do serve entire application
+	//more production : will run all the 
+
+
+############################################ RUN THE PROGRAM ############################################
+
+npm run build 
+	after run build a directory 'dist' will be created with bundle.js and index.html
+
+npm run start
+	go to a browser and type localhost:9090
+
+##########################################################################################################
+until this point everything should work correctly
+
+
+install
+npm i react react-dom
+
+creates 'application.js' file in /ReactApp/src/app
+	then add:
+		
+import React, {Component} from 'react';
+export default class ApplicationComponent extends Component {
+			 //return UI
+    render(){
+        let name = "Joel", x=5, y = 9
+        return ( //vitual DOM - JSX code (JavaScript XML structure)
+            <div>
+               <h1>This is coming from Application Component</h1>
+                
+                <b>{name}</b>
+                <hr />
+                <b>Multiply 5*9 = {5*9} </b>
+                <hr />
+                <b>Sum 5+9 = {5+9} </b>
+            </div>
+        );
+    }
+}
+
+
+then we need to load application and hook application.js with index.js--> go to index.js (/ReactApp/src/index.js)
+import react component 
+	import React from "react"
+	import Application from "./app/application" //hook
+	import * as ReactDOM from "react-dom/client" //loading, it will create ReactDOM structure
+
+	//creating root of the react application where we can load the react app
+	const root = ReactDOM.createRoot(document.getElementById("root"));
+	
+	//hooking or injecting module to our htmp page
+	root.render(
+		<ApplicationComponent/>
+	)
+
+after that, then build
+	npm run build
+		check /ReactApp/dist/bundle.js 
+		

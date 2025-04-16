@@ -1,0 +1,42 @@
+/*
+createNew route with Name Student and have at least 5 API's there similar to defaultRoute,
+Load these API's via new express app, using mounting and
+also demonstrate - routeParam, static middle ware, sending file back as repsonce, using query string to get data in api, and fifth api is of your choice!!
+
+*/
+HOW TO SET UP EXPRESS, NODEMON
+
+1/npm init 
+2/
+package name: (nodeapistudent) express
+version: (1.0.0)
+description: builds restful api's using express over node framework
+entry point: (index.js) server.js
+test command: 
+git repository:
+keywords: Fast, unopinionated, minimalist web framework for Node.js
+author: sit
+license: MIT
+
+
+Is this OK? (yes) yes
+
+3/ npm i express
+
+//nodemon helps refreshing the page so it does not need to be refreshed everytime when making changes
+4/ npm i nodemon -D 
+
+5/ In package.json make some changes
+--> locate 
+"scripts": {
+    "start1": "node.server.js",
+    "start": "nodemon server.js",
+    "test": "echo\"Error: no test specified\" && exit 1"
+
+}
+
+so we can use: npm start not yet work cuz it is missing path
+
+
+6/ then create all the folders following nodeAPI folder
+
