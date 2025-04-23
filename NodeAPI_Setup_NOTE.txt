@@ -40,3 +40,4 @@ so we can use: npm start not yet work cuz it is missing path
 
 6/ then create all the folders following nodeAPI folder
 
+7/ npm i react-router-dom
