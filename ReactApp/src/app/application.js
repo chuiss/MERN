@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./app.css";
-import Footer from "./CommonComponents/FooterComponents";
-import Header from "./CommonComponents/HeaderComponents";
-import Home from "./CommonComponents/HomeComponents";
-import NotFound from "./CommonComponents/NotFoundComponents";
-import About from "./CommonComponents/AboutComponents";
+import Footer from "./CommonComponents/FooterComponent.js";
+import Header from "./CommonComponents/HeaderComponent.js";
+import Home from "./CommonComponents/HomeComponent.js";
+import NotFound from "./CommonComponents/NotFoundComponent.js";
+import About from "./CommonComponents/AboutComponent.jsx";
+import ComponentTypes from "./CommonComponents/ComponentType.js";
 
 export default class ApplicationComponent extends Component {
 
@@ -15,15 +16,16 @@ export default class ApplicationComponent extends Component {
     constructor(props) {
         super();
         this.state = {
+            userName : "react user ",
             user : {
                     userName : "Test User",
-                    userAddress : "SomeAddress"
+                    userAge : 19
                     }
         }
         this.sessionName = "MERNStack - React Props"
     }
 
-    changeUserNameEvent = (evt)=>{
+    changeUserNameEvent = (userName)=>{
 
         //this.state.userName = "Tejasvi" //with this way render method will not be called and no new virtual dom will be created
 
@@ -31,13 +33,7 @@ export default class ApplicationComponent extends Component {
         //so that new virtual dom gets created
 
         this.setState({
-            userName : `Dat -  
-                This is coming from Application Component
-                This is coming from Application Component
-
-                This is coming from Application Component
-
-                This is coming from Application Component`,
+            userName : userName
             //userAddress : "Somewhere on earth!!!!!!"
         })
 
@@ -67,13 +63,16 @@ export default class ApplicationComponent extends Component {
         
         console.log("Render method is called!!")
         return( //vitual dom or jsx code (javascript like xml structure)
-            <Router>
+            <Router>                
                 <div className="topdiv">
                     <Header />
                         <Routes>
                             <Route path="/" element={<Home user={this.state.user} />}/>
-                            <Route path="home" element={<Home />}/>
+                            <Route path="home" element={<Home user={this.state.user} />}/>
+                            <Route path="comp" element={<ComponentTypes />}/>
                             <Route path="about" element={<About />}/>
+                            {/* <Route path="about/:id" element={<About />}/> */}
+                            {/* <Route path="about/:id/:name" element={<About />}/> */}
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     <Footer sessionName={this.sessionName}/>
@@ -85,7 +84,11 @@ export default class ApplicationComponent extends Component {
 
 
 
+//create a route for your component with your name
+//navigate with route param with your emailid 
+//use another route param to send your next session details, this should be passed by clicking on botton not with nav-link
 
+//use - useNavigate and useParams hooks to demonstrate the features
 
 
 
