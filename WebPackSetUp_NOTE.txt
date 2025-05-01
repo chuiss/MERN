@@ -75,15 +75,54 @@ After added we will install
 
 npm i @babel/core @babel/preset-env @babel/preset-react babel-loader -D
 
-Next, Creats 'src' directory in ReactApp folder --> then create 'app' directory in 'src' directory folder --> Creates 'index.js' and 'index.html' files in src 
+Next, Creates 'src' directory in ReactApp folder --> then create 'app' directory in 'src' directory folder --> Creates 'index.js' and 'index.html' files in src 
 --> in 'index.html' type 'html:5' enter --> 'html:5' structure will be created --> Change title to 'React App' 
 --> in body add 
+
 <h1>This is the index page of our application</h>
-<div id="root">This Div will act as a container for react application!!!</div>
+<div id="root">This Div will act as a container for react application!!!</div> <!--FOLLOW THE BELOW CODE--!>
+
+
+
+In index.html add
+========================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Shopping</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- <h1>This is the Index Page of our application</h1> -->
+    
+    <div id="root">This Div will act as a container for react application!!!</div> <!--VERY IMPORTANT--!>
+</body>
+</html>
+==========================================================================================================
+
 
 
 In index.js add
-	console.log("This file is part of webpack configuration and is loaded via bundle.js refered in index.html")
+==========================================================================================================
+console.log("This file is part of webpack configuration and is loaded via bundle.js refered in index.html")
+
+import React from "react"
+import ApplicationComponent from "./app/application"
+import * as ReactDOM from "react-dom/client"
+
+//creating root of the react application where we can load the react app
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+//bootstrapping the react application
+root.render(
+    <ApplicationComponent/>
+)
+===========================================================================================================	
+
 
 install 
 npm i css-loader html-webpack-plugin style-loader -D
@@ -100,6 +139,7 @@ in 'package.json' --> "scripts" --> add 2 commands
 ############################################ RUN THE PROGRAM ############################################
 
 npm run build 
+    makes sure wait for it to run completely, it might take sometimes
 	after run build a directory 'dist' will be created with bundle.js and index.html
 
 npm run start
@@ -137,6 +177,7 @@ export default class ApplicationComponent extends Component {
 
 then we need to load application and hook application.js with index.js--> go to index.js (/ReactApp/src/index.js)
 import react component 
+========================================================================================================
 	import React from "react"
 	import Application from "./app/application" //hook
 	import * as ReactDOM from "react-dom/client" //loading, it will create ReactDOM structure
@@ -148,6 +189,7 @@ import react component
 	root.render(
 		<ApplicationComponent/>
 	)
+========================================================================================================
 
 after that, then build
 	npm run build

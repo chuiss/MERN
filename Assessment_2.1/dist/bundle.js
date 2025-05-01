@@ -1,0 +1,1 @@
+console.log("This file is part of webpack configuration and is loaded via bundle.js refered in index.html");
