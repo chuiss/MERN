@@ -6,7 +6,7 @@ npm init
 
 ---> Press enter(s) for default setting ---> package.json is created ---> 
 
-
+***MAKE SURE TO REMOVE 'Type' first before run build
 
 npm i webpack webpack-cli webpack-dev-server -D
 
@@ -75,7 +75,8 @@ After added we will install
 
 npm i @babel/core @babel/preset-env @babel/preset-react babel-loader -D
 
-Next, Creates 'src' directory in ReactApp folder --> then create 'app' directory in 'src' directory folder --> Creates 'index.js' and 'index.html' files in src 
+Next, Creates 'src' directory in ReactApp folder --> then create 'app' directory in 'src' directory folder 
+--> Creates 'index.js' and 'index.html' files in src 
 --> in 'index.html' type 'html:5' enter --> 'html:5' structure will be created --> Change title to 'React App' 
 --> in body add 
 
@@ -99,7 +100,7 @@ In index.html add
 <body>
     <!-- <h1>This is the Index Page of our application</h1> -->
     
-    <div id="root">This Div will act as a container for react application!!!</div> <!--VERY IMPORTANT--!>
+    <div id="root">
 </body>
 </html>
 ==========================================================================================================

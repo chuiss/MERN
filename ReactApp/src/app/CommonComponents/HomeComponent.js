@@ -10,8 +10,6 @@ import Footer from "./FooterComponent";
 export default class Home extends PureComponent {
 
     //creation life cycle starts
-    // Initializes state before the component is mounted
-    // Must call super(props) to inherit from React.Component.
     constructor(props){
         super();
         //initializing the state/props/fields etc
@@ -32,60 +30,17 @@ export default class Home extends PureComponent {
         //this.userNameRef.current.focus();
     }
     
-    /**
-     * Called ONCE after first render.
-        Ideal for:
-            Fetching data
-            DOM manipulations
-            Setting up subscriptions/timers
-     */
     //this creation life cycle method ensure html is rendered on browser we can make call to fetch data and bind it to html element
     componentDidMount(){
         console.log("componentDidMount" )
 
-        setTimeout(()=>{
-            this.userNameRef.current.value = "Value has been updated"
-            this.userNameRef.current.focus();
-        },2000)
+        // setTimeout(()=>{
+        //     this.userNameRef.current.value = "Value has been updated"
+        //     this.userNameRef.current.focus();
+        // },2000)
         
     }
 
-    /**
-     * Runs after every update is flushed to DOM.
-
-        Can:
-            Trigger network requests based on prop/state changes.
-            Interact with third-party libraries.
-            Use setState() conditionally to avoid loops.
-     */
-    componentDidUpdate(prevState, prevProps){
-        console.log("componentDidUpdate");
-        // console.log("prevState",prevState);
-        // console.log("prevProps", prevProps);
-
-        // this.setState({
-        //     uState : prevState.uState
-        // })
-    }
-
-    //destruction life cycle method
-    /**
-     * componentWillUnmount()
-
-        Called BEFORE component is removed from DOM.
-
-        Use to clean up:
-            all the api calls
-            reference
-            Network requests
-     */
-    componentWillUnmount(){
-        
-        console.log("componentWillUnmount is called")
-        //clearInterval(this.intervalObject);
-    }
-
-    //#region helpers
     incrementCounter = ()=>{
         this.intervalObject = setInterval(()=> {//continous loop
                 this.setState(
@@ -141,29 +96,67 @@ export default class Home extends PureComponent {
         }
     }
 
-    //#endregion
+    componentDidUpdate(prevState, prevProps){
+        console.log("componentDidUpdate");
+        // console.log("prevState",prevState);
+        // console.log("prevProps", prevProps);
+
+        // this.setState({
+        //     uState : prevState.uState
+        // })
+    }
+
+    //destruction life cycle method
+    //it must be used to clear all the api calls, reference that are used in current component
+    componentWillUnmount(){
+        
+        console.log("componentWillUnmount is called")
+        //clearInterval(this.intervalObject);
+    }
+
+    //defining the event handler to be executed by child component
+    eventToBeCalledFromChild = (userAge) => {
+        this.setState({
+            userAge
+        })
+    }
 
     //render life cycle method must be implemented to return the view/virtual dom/jsx
     render(){
         console.log("Home Render!!!")
         return(
-            <>
-                <h1>Home Component</h1>  
+            <div className={"loadimage form"} style={{border:"1px solid red"}}>
+                <h1>{this.state.title}</h1>
+                <b className="feature">{"Product Feature's :"}</b>
+                <ul>                     
+                    <li>Sign up new users</li>
+                    <li>Login existing users.</li>                
+                    <li>Allow user's to add to cart.</li>
+                    <li>Save the user's cart.</li>
+                    <li>Checkout and pay for items.</li>
+                    <li>Allow users to cancel the order.</li>
+                    <li>Allow users to reorder the cart.</li>
+                    <li>Add products/items to create product collection.</li>
+                    <li>Allow users to give ratings to each product.</li>
+                    <li>Have notifications on top right with logout.</li>
+                </ul>
+            </div>
+            // <>
+            //     <h1>Home Component</h1>  
 
-                <input type="text" value={this.state.userName} ref={this.userNameRef} />
+            //     <input type="text" value={this.state.userName} ref={this.userNameRef} />
 
-                <label>{this.state.userAge}</label>
+            //     <label>{this.state.userAge}</label>
                 
-                <hr />
-                <label>{this.state.userAddress}</label>
-                {/* binding event to a button in react component */}
-                <button onClick={this.changeUserAddressEvent}>Change User Address</button>
+            //     <hr />
+            //     <label>{this.state.userAddress}</label>
+            //     {/* binding event to a button in react component */}
+            //     <button onClick={this.changeUserAddressEvent}>Change User Address</button>
 
-                {/* <Footer>
-                    <h4>Passed in the footer component as prop</h4>
-                    <ComponentTypes />
-                </Footer> */}
-            </>
+            //     {/* child of home component */}
+            //     <ComponentTypes userAge={this.state.userAge} 
+            //             passToParent={this.eventToBeCalledFromChild}/>
+            // </>
         )
     }
 }
