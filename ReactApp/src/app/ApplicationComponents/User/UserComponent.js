@@ -5,20 +5,13 @@
 // creating and updating the ref element (useRef)
 
 import React, { useState, useRef } from "react";
-import { connect } from "react-redux"; //helps to connect react component with redux store
-
-import { AddUserToStore } from "../../State/User/UserAction"; //importing the action creator to be used in component
 
 let UserComponent = (props)=>{
 
     // the class component inherits from Component base class from react and has implementation for state and 
-    // its API's setState and forceUpdate
-    // constructor(){
-    //     this.state = {}
-    // }
-    //this.state.userName = "new name"
-
-    //useState - hook implements an object to create the state and a callback to udpate the state
+    
+    console.log("Useromponent")
+    //this allows us to access the state from store as we do with mapStateToProps
     let [userName, updateUserName] = useState(props.user.userName)
     let [password, updateUserPassword] = useState(props.user.password)
     let [street, updateUserAddress] = useState(props.user.street)
@@ -100,22 +93,5 @@ let UserComponent = (props)=>{
     )
 }
 
-//subscribing from store - mapStateToProps - allows to access the store data in react component as props
-let mapStateToProps = (store)=>{
-    return{
-        user : store.useReducer.user //this is accessing user data from user reducer and will be used in component as props
-    }
-}
+export default UserComponent;
 
-//publishing to store
-let mapDispatchToProps = (dispatch)=>{
-    return{
-        addUser : (userData)=>{
-            console.log("User data to be sent to reducer", userData)
-            dispatch(AddUserToStore(userData))//dispatcher works as a pipline to take the action to store
-        }
-    }
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserComponent);

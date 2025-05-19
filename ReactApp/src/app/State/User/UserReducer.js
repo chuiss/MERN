@@ -5,7 +5,7 @@ import { act } from "react";
 import * as actionTypes from "../ActionTypes";
 let initialState = {
     user : {
-        userName : "",
+        userName : "Default",
         password : "",
         street : "",
         mobile : ""

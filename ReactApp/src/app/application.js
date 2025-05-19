@@ -8,7 +8,8 @@ import Home from "./CommonComponents/HomeComponent";
 import NotFound from "./CommonComponents/NotFoundComponent";
 import About from "./CommonComponents/AboutComponent.jsx";
 import ComponentTypes from "./CommonComponents/ComponentType.js";
-import UserComponent from "./ApplicationComponents/User/UserComponent.js";
+import UserComponent from "./ApplicationComponents/User/UserContainer.js";
+import UserHookComponent from "./ApplicationComponents/User/UserHooksComponent.js";
 
 export default class ApplicationComponent extends Component {
 
@@ -72,6 +73,7 @@ export default class ApplicationComponent extends Component {
                             <Route path="/" element={<Home user={this.state.user} />}/>
                             <Route path="home" element={<Home user={this.state.user} />}/>
                             <Route path="user" element={<UserComponent />}/>
+                            <Route path="userhook" element={<UserHookComponent />}/>
                             {/* <Route path="comp" element={<ComponentTypes />}/> */}
                             <Route path="about" element={<About />}/>
                             {/* <Route path="about/:id" element={<About />}/> */}
