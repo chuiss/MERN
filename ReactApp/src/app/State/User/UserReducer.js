@@ -1,11 +1,11 @@
 //reducer is a function which allows to set the state when any component needs to access
 //this uses switch case statement to have multiple actions handling - create, update, delete etc
 //each reducer will further get combined as one entity in store and will be accessed by store object when it subscribes
-import { act } from "react";
-import * as actionTypes from "../ActionTypes";
+import * as actionTypes from "../ActionTypes"
+
 let initialState = {
     user : {
-        userName : "Default",
+        userName : "",
         password : "",
         street : "",
         mobile : ""
