@@ -4,7 +4,7 @@ import axios from "axios";
 //product calls
 //product action and server call
 export const saveProduct = (product) => {
-    console.log("Product ", product);
+    console.log("saveProduct ", product);
 
     return function(dispatch){
 
@@ -20,7 +20,7 @@ export const saveProduct = (product) => {
 }
 }
 
-export const addProduct = (products) => {
+export const setProducts = (products) => {
     return{
         type: actionTypes.ADD_PRODUCTS_TOSTORE,
         payload: {products}
@@ -28,14 +28,13 @@ export const addProduct = (products) => {
 }
 
 export const fetchProducts = () => {
-    console.log("Products ")
     return function(dispatch){
 
-        axios.get("http://localhost:9000/product/api/getproducts")
+        axios.get("http://localhost:9000/product/api/getProducts")
         .then((allProducts) => {
             let productresp = allProducts.data;
-            console.log("get products response", productresp);
-            dispatch (addProduct(productresp))
+            
+            dispatch (setProducts(productresp))
         })
         .catch((err) => {
             console.log("Error while saving product", err);

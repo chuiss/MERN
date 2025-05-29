@@ -196,3 +196,22 @@ after that, then build
 	npm run build
 		check /ReactApp/dist/bundle.js 
 		
+
+
+
+7/ npm i react-router-dom --- optional
+
+8/ npm i prop-types  --- optional
+
+9/ npm i redux               
+# Core state management library for handling global state.
+
+10/ npm i axios               
+# HTTP client for making API calls from the frontend.
+
+11/ npm i react-redux         
+# Official React bindings for Redux—lets components access the Redux store.
+
+12/ npm i @reduxjs/toolkit    
+# The recommended way to write Redux logic.
+# Includes utilities for reducers, middleware, and actions with less boilerplate.

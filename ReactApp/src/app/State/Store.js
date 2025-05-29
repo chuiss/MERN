@@ -15,18 +15,18 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import userReducer from "./User/UserReducer";
 import productReducer from "./Product/ProductReducer";
+import cartReducer from "./Cart/CartReducer";
 
 let rootReducer = combineReducers({
     userReducer, //userReducer : userReducer
-    productReducer //productReducer : productReducer
+    productReducer, //productReducer : productReducer
+    cartReducer
 })
 function logger({getState}){
     return next => action => {
-        console.log('will dispatch', action)
 
         // call the next dispatch method in the middleware chain
         const returnValue = next(action)
-        console.log('state after dispatch', getState())
         // This will likely be the action itself, unless
         // a middleware further in chain changed it.
         return returnValue

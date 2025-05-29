@@ -5,7 +5,6 @@ import { connect } from "react-redux"; //helps to connect react component with r
 let Header = (props)=>{
     let user = props.user; //reading from mapStateToProps which reads from userReducer.user
     
-    console.log(user)
     
     const usrName = user && user.userName ? user.userName : "";
 

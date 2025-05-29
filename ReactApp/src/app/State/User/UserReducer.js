@@ -17,7 +17,6 @@ let initialState = {
 // type - the type of action is needed
 // payload - the data object to be updated once type is matched
 let userReducer = (state = initialState, action) => {
-    console.log("User Reduer ", action)
 
     switch (action.type) {
         case actionTypes.AddUserToStore:

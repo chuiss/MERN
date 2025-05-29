@@ -1,106 +1,75 @@
+import axios from "axios";
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveCart } from "../../State/Cart/CartAction";
-
+ 
 let CartHookComponent = (props) => {
     // Get cart state from Redux store
-    let cartState = useSelector((state) => state.cartReducer.Cart);
+    let cartItems = useSelector((state) => state.cartReducer.CartItems);
 
-    console.log("CartHookComponent", cartState);
-
-    // useRef hooks for form fields
-    let name = useRef(null);
-    let price = useRef(null);
-    let category = useRef(null);
-    let description = useRef(null);
-    let rating = useRef(null);
-
+    console.log("CartHookComponent", cartItems);
+ 
     // useEffect for pre-filling inputs if cart already exists
     useEffect(() => {
-        if (cartState) {
-            name.current.value = cartState.name || "";
-            price.current.value = cartState.price || "";
-            category.current.value = cartState.category || "";
-            description.current.value = cartState.description || "";
-            rating.current.value = cartState.rating || "";
-        }
-    }, [cartState]);
+       
+    }, [cartItems]);
 
     const dispatchCart = useDispatch();
-
+    
     let submitCart = (evt) => {
-        let cartObj = {
-            name: name.current.value,
-            price: price.current.value,
-            category: category.current.value,
-            description: description.current.value,
-            rating: rating.current.value
-        };
-
-        dispatchCart(saveCart(cartObj));
-
-        alert("Cart submitted to DB: " + JSON.stringify(cartObj));
-
+        for (const cartItem of cartItems) {
+            // CALL API to save cart items
+            axios.post("http://localhost:9000/cart/api/saveCartItem", cartItem)
+            .then(response => {
+                console.log("Cart saved. All items:", response.data);
+                return response.data; // returning updated cart list
+            })
+            .catch(error => {
+                console.error("Error saving cart item:", error);
+                throw error;
+            });
+        }
         evt.preventDefault(); // prevent full form reload
     };
+    
+    const CartDisplayComponent = ({ cartItems }) => {
+        return (
+            <div className="container mt-4">
+                <h2 className="mb-4">🛒 Your Cart</h2>
+                {
+                    cartItems.length === 0 ? (
+                        <p className="text-muted">Your cart is empty.</p>
+                    ) : (
+                        <div className="row justify-content-center">
+                            {cartItems.map((item, index) => (
+                                <div key={index} className="card col-md-6 m-2 shadow-sm">
+                                    <div className="card-body">
+                                        <div className="d-flex justify-content-between align-items-center mb-2">
+                                            <h5 className="card-title mb-0">{item.name}</h5>
+                                            <span className="badge bg-primary fs-6">${item.price}</span>
+                                        </div>
+                                        <p className="card-text mb-1"><strong>Category:</strong> {item.category}</p>
+                                        <p className="card-text mb-1"><strong>Description:</strong> {item.description}</p>
+                                        <p className="card-text mb-1"><strong>Rating:</strong> {item.rating}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+        );
+    };
+
 
     return (
         <>
-            <h1>Cart Form - Using Hooks</h1>
-            <form className="form-control col-md-12" onSubmit={submitCart}>
-                <b>Product Name</b>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter product name"
-                    ref={name}
-                    maxLength={25}
-                    required
-                />
+            <h1>My Cart</h1>
+            <CartDisplayComponent cartItems={cartItems} />
 
-                <b>Price</b>
-                <input
-                    type="number"
-                    className="form-control"
-                    placeholder="Enter price"
-                    ref={price}
-                    required
-                />
-
-                <b>Category</b>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter category"
-                    ref={category}
-                    maxLength={20}
-                    required
-                />
-
-                <b>Description</b>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter description"
-                    ref={description}
-                    maxLength={100}
-                    required
-                />
-
-                <b>Rating</b>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter rating"
-                    ref={rating}
-                    maxLength={5}
-                    required
-                />
-
-                <button type="submit" className="btn btn-success mt-3">
-                    Save Cart
-                </button>
-            </form>
+            <button type="submit" className="btn btn-success mt-3" onClick={submitCart}>
+                Save Cart
+            </button>
+           
         </>
     );
 };

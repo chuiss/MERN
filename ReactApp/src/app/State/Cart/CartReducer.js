@@ -1,22 +1,16 @@
 import * as ActionTypes from "../ActionTypes";
 
 const Initial_State = {
-    Cart: {
-        name: "",
-        price: "",
-        category: "",
-        description: "",
-        rating: ""
-    },
-    Carts: [],
+
+    CartItems: [],  // this holds all the products added to the cart
     Loading: false
 };
 
-let CartReducer = (state = Initial_State, action) => {
+let cartReducer = (state = Initial_State, action) => {
     //switch case logic to read action type and return new state / updated state
     switch (action.type){
-        case ActionTypes.ADD_CART_TOSTORE:
-                return { ...state, Carts: [...state.Carts, action.payload.product] };
+        case ActionTypes.ADD_CART_TO_STORE:
+                return { ...state, CartItems: [...state.CartItems, action.payload.product] };
         case "SET_LOADING":
             return { ...state, Loading: action.payload.loading }; //we update loading and then return a new state
         default:
@@ -24,4 +18,7 @@ let CartReducer = (state = Initial_State, action) => {
 
     }
 }
-export default CartReducer;
+
+export default cartReducer;
+
+ 

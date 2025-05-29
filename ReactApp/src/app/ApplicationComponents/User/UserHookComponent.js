@@ -23,7 +23,6 @@ let UserHookComponent = (props)=>{
 
     //
     useEffect(()=>{
-        console.log("UserHookComponent - useEffect")
         userName.current.value = userState.userName
         password.current.value = userState.password
         street.current.value = userState.street

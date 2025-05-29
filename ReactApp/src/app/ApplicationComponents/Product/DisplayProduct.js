@@ -10,7 +10,7 @@ let DisplayProduct = ()=>{
 
     let dispatchToFetchProduct = useDispatch();
 
-    console.log(products)
+    console.log("products", products)
 
     //component did mount
     useEffect(()=>{

@@ -11,6 +11,8 @@ import ComponentTypes from "./CommonComponents/ComponentType.js";
 import UserComponent from "./ApplicationComponents/User/UserContainer.js";
 import UserHookComponent from "./ApplicationComponents/User/UserHookComponent.js";
 import ProductComponent from "./ApplicationComponents/Product/ProductComponent.js";
+import CartComponent from "./ApplicationComponents/Cart/CartComponent.js";
+import CartHookComponent from "./ApplicationComponents/Cart/CartHookComponent.js";
 
 export default class ApplicationComponent extends Component {
 
@@ -65,7 +67,6 @@ export default class ApplicationComponent extends Component {
 
     render(){
         
-        console.log("Render method is called!!")
         return( //vitual dom or jsx code (javascript like xml structure)
             <Router>                
                 <div className="topdiv">
@@ -78,6 +79,7 @@ export default class ApplicationComponent extends Component {
                             <Route path="product" element={<ProductComponent />}/>
                             {/* <Route path="comp" element={<ComponentTypes />}/> */}
                             <Route path="about" element={<About />}/>
+                            <Route path="cart" element={<CartHookComponent />}/>
                             {/* <Route path="about/:id" element={<About />}/> */}
                             {/* <Route path="about/:id/:name" element={<About />}/> */}
                             <Route path="*" element={<NotFound />} />
