@@ -14,9 +14,11 @@ import { combineReducers, applyMiddleware } from "redux";
 import { configureStore } from '@reduxjs/toolkit';
 
 import userReducer from "./User/UserReducer";
+import productReducer from "./Product/ProductReducer";
 
 let rootReducer = combineReducers({
-    userReducer //userReducer : userReducer
+    userReducer, //userReducer : userReducer
+    productReducer //productReducer : productReducer
 })
 function logger({getState}){
     return next => action => {

@@ -2,3 +2,6 @@
 // reducer switch case and actions action types should be same
 
 export const AddUserToStore = "USER.ADDUSERTOSTORE";
+export const ADD_PRODUCTS_TOSTORE = "STORE.ADDPRODUCT";
+export const ADD_CART_TOSTORE = "STORE.ADDCART";
+
