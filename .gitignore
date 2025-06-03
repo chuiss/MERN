@@ -1,2 +1,7 @@
 **/dist/
 **/node_modules/
+ReactApp/dist/
+**/dist/bundle.js
+**/dist/bundle.js.LICENSE.txt
+ReactApp/dist/bundle.js
+ReactApp/dist/bundle.js.LICENSE.txt
