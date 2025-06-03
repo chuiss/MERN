@@ -1,42 +1,48 @@
-const express = require('express'); // import package
-const cartRouter = express.Router({ strict: true, caseSensitive: true }); // a separate router
-const cartDataModel = require('../DataModel/cartDataModel'); // your mongoose model
+let express = require("express");
+let router = express.Router({}),
+CartDataModel = require("../DataModel/cartDataModel");
 
-// POST - Save cart item
-cartRouter.post("/api/saveCartItem", (req, res) => {
-    let cartObj = req.body;
-    console.log("Cart Object Received:", cartObj);
+//cart api's
+router.post("/api/saveUserCart",(req, res)=>{
 
-    let cartSchemaObj = new cartDataModel(cartObj);
+    CartDataModel.findOne({userid: req.body.userid})
+        .then((cartDbObj) => {        
+                if (!cartDbObj) { //checks for null cart of given user
+                        console.log("No cartitems Present, Adding / Inserting!"); 
+                        let cartObj = new CartDataModel(req.body);
 
-    cartSchemaObj.save()
-        .then((savedCartItem) => {
-            console.log("Successfully saved cart item:", savedCartItem);
-            cartDataModel.find()
-                .then((allCartItems) => {
-                    res.send(allCartItems); // return all cart items after saving
-                })
-                .catch((fetchErr) => {
-                    console.log("Error fetching cart items:", fetchErr);
-                    res.status(500).send("Error while fetching cart items");
-                });
-        })
-        .catch((saveErr) => {
-            console.log("Error saving cart item:", saveErr);
-            res.status(500).send("Error while saving cart item");
-        });
+                        cartObj.save().then((data)=>{                                  
+                            res.json(data);
+                        }).catch((err)=>{
+                            res.send("Error Occurred"+ err);
+                        });
+                }
+                else{ //update the cart for given user
+                    console.log("CartItems Present, Replacing / Updating!");
+                    cartDbObj.cart = req.body.cart;//replacing db cart with cart that user has sent from cartcomponent page
+                    
+                    cartDbObj.save()
+                    .then((data)=>{        
+                        // setTimeout(()=>{
+                            res.json(data);
+                        //},10000)                        
+                    })
+                    .catch((err)=>{
+                        res.send("Error Occurred"+ err);
+                    })
+                }
+  })
+  .catch((err)=>{
+        console.log("got an error!", err);            
+        res.send("error while fetching cart!");
+  });
+
 });
 
-// GET - Fetch all cart items
-cartRouter.get("/api/getCartItems", (req, res) => {
-    cartDataModel.find()
-        .then((cartItems) => {
-            res.send(cartItems);
-        })
-        .catch((err) => {
-            console.log("Error fetching cart items:", err);
-            res.status(500).send("Error while fetching cart items");
-        });
+router.post("/api/getUserCart",(req, res)=>{
+    CartDataModel.findOne({userid: req.body.userid})
+        .then((cart) => { res.json(cart) })
+        .catch((err)=>{res.send("Error Occurred"+ err);})
 });
 
-module.exports = cartRouter;
+module.exports = router;

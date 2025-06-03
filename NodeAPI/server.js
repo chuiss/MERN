@@ -25,7 +25,7 @@ app.use(cors())//using cors middleware to allow resource sharing with different 
 app.use('/static', express.static('public')) //localhost:9000/static/alert_info.js
 
 //json middle-ware for setting request content type to json in body
-app.use(express.json({limit:'2mb', extended:false})); 
+app.use(express.json({limit:'2mb'})); 
 
 
 app.use("/user", userApp) 

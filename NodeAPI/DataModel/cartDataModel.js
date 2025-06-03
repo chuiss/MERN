@@ -6,16 +6,11 @@ mongooseObj.connect("mongodb://127.0.0.1/data25");
 
 let cartSchema = new schemaObj(
     {
-        name: { type: String, required: true },
-        price: { type: Number, required: true },
-        category: { type: String, required: true },
-        description: { type: String, required: true },
-        rating: { type: String, default: "N/A" },
-        qty: { type: Number, default: 1 },
-        addedAt: { type: Date, default: Date.now }
+       userid: {type:String, required: true},
+       cart: Object 
     },
     {
-        versionKey: false // disables __v field in MongoDB
+        versionKey: false // set to false so it wont create in MongoDB
     }
 );
 

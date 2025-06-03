@@ -18,7 +18,7 @@ although mongodb is schema less but with mongoose we can create a schema to star
 */
 
 let mongooseObj = require("mongoose");
-schemaObj = mongooseObj.Schema; //using the schema class from mongoose
+let schemaObj = mongooseObj.Schema; //using the schema class from mongoose
 
 //creates db with name mernstack19 or opens a connection if already present
 mongooseObj.connect("mongodb://127.0.0.1/data25");
