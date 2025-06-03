@@ -4,13 +4,13 @@ import { fetchProducts } from "../../State/Product/ProductAction";
 import ProductItemComponent from "./ProductItemComponent";
 
 
-let DisplayProduct = ()=>{
+let DisplayProducts = ()=>{
 
     let products = useSelector((state)=>state.productReducer.Products)
 
     let dispatchToFetchProduct = useDispatch();
 
-    console.log("products", products)
+    console.log(products)
 
     //component did mount
     useEffect(()=>{
@@ -30,4 +30,4 @@ let DisplayProduct = ()=>{
     )
 }
 
-export default DisplayProduct;
+export default DisplayProducts;

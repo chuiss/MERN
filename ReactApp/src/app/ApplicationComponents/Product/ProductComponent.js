@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-//import { saveProduct } from "../../State/Product/ProductAction";
+import { saveProduct } from "../../State/Product/ProductAction";
 import DisplayProducts from "./DisplayProduct";
-import { saveToCart } from "../../State/Cart/CartAction";
 
 let ProductComponent = (props) => {
 
@@ -77,8 +76,8 @@ let ProductComponent = (props) => {
                     </div>
 
                     <input type="button" className={"form-control btn btn-primary col-md-3"} 
-                        value={"Add To Cart"} 
-                        onClick= {() => (saveProductClick(product))}/>
+                        value={"Save Product"} 
+                        onClick={saveProductClick}/>
                 </div>
             </form>
             <hr/>

@@ -1,5 +1,5 @@
 import React, { Component, PureComponent } from "react";
-import {PropTypes} from "prop-types";
+
 import ComponentTypes from "./ComponentType";
 import Footer from "./FooterComponent";
 
@@ -11,7 +11,7 @@ export default class Home extends PureComponent {
 
     //creation life cycle starts
     constructor(props){
-        super();
+        super(props);
         //initializing the state/props/fields etc
         this.state = {
             userName : props.user.userName,

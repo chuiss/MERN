@@ -4,13 +4,17 @@
 // like - creating and updating a state (useState)
 // creating and updating the ref element (useRef)
 
+// @ts-ignore
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; //
+// @ts-ignore
 import { SaveUserToDB, SaveUserToDBUsingFetch } from "../../State/User/UserAction";
 
+// @ts-ignore
 let UserHookComponent = (props)=>{
 
     //this allows us to access the state from store as we do with mapStateToProps
+    // @ts-ignore
     let userState = useSelector((state) => state.userReducer.user);
 
     console.log("UserHookComponent", userState)
@@ -23,9 +27,13 @@ let UserHookComponent = (props)=>{
 
     //
     useEffect(()=>{
+        // @ts-ignore
         userName.current.value = userState.userName
+        // @ts-ignore
         password.current.value = userState.password
+        // @ts-ignore
         street.current.value = userState.street
+        // @ts-ignore
         mobile.current.value = userState.mobile
     },[])
 
@@ -37,14 +45,19 @@ let UserHookComponent = (props)=>{
         //this is the call to dispatcher using action creater
         //debugger;
         let userObj = {
+            // @ts-ignore
             userName: userName.current.value,
+            // @ts-ignore
             password: password.current.value,
+            // @ts-ignore
             street: street.current.value,
+            // @ts-ignore
             mobile: mobile.current.value
         }
 
         //dispatchUser(SaveUserToDB(userObj))
 
+        // @ts-ignore
         dispatchUser(SaveUserToDBUsingFetch(userObj))
 
         //alert("User send to api via ajax call")

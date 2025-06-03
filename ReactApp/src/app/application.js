@@ -11,8 +11,9 @@ import ComponentTypes from "./CommonComponents/ComponentType.js";
 import UserComponent from "./ApplicationComponents/User/UserContainer.js";
 import UserHookComponent from "./ApplicationComponents/User/UserHookComponent.js";
 import ProductComponent from "./ApplicationComponents/Product/ProductComponent.js";
+
 import CartComponent from "./ApplicationComponents/Cart/CartComponent.js";
-import CartHookComponent from "./ApplicationComponents/Cart/CartHookComponent.js";
+import Checkout from "./ApplicationComponents/Checkout/CheckoutComponent.js";
 
 export default class ApplicationComponent extends Component {
 
@@ -20,7 +21,7 @@ export default class ApplicationComponent extends Component {
      *
      */
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             userName : "react user ",
             user : {
@@ -31,7 +32,7 @@ export default class ApplicationComponent extends Component {
         this.sessionName = "MERNStack - React Props"
     }
 
-    changeUserNameEvent = (userName)=>{
+    changeUserNameEvent = (evt, userName)=>{
 
         //this.state.userName = "Tejasvi" //with this way render method will not be called and no new virtual dom will be created
 
@@ -79,7 +80,8 @@ export default class ApplicationComponent extends Component {
                             <Route path="product" element={<ProductComponent />}/>
                             {/* <Route path="comp" element={<ComponentTypes />}/> */}
                             <Route path="about" element={<About />}/>
-                            <Route path="cart" element={<CartHookComponent />}/>
+                            <Route path="checkout" element={<Checkout />}/>
+                            <Route path="cart" element={<CartComponent />}/>
                             {/* <Route path="about/:id" element={<About />}/> */}
                             {/* <Route path="about/:id/:name" element={<About />}/> */}
                             <Route path="*" element={<NotFound />} />
